@@ -666,6 +666,11 @@ ItemUseFunc ItemId_GetFieldFunc(u16 itemId)
 
 bool8 ItemId_GetBattleUsage(u16 itemId)
 {
+    // POCKET_POKE_BALLS é a aba de Pokébolas. Qualquer outro item retorna falso para uso em batalha.
+    if (ItemId_GetPocket(itemId) != POCKET_POKE_BALLS)
+    {
+        return FALSE; 
+    }
     return gItems[SanitizeItemId(itemId)].battleUsage;
 }
 

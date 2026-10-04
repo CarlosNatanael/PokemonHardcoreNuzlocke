@@ -232,6 +232,11 @@ static void HandleInputChooseAction(void)
             BtlController_EmitTwoReturnValues(1, B_ACTION_USE_MOVE, 0);
             break;
         case 1:
+            if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+            {
+                PlaySE(SE_FAILURE); // Toca o som de "bop" (erro)
+                return; // Encerra a função e não deixa o menu abrir
+            }
             BtlController_EmitTwoReturnValues(1, B_ACTION_USE_ITEM, 0);
             break;
         case 2:
