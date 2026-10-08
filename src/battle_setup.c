@@ -58,6 +58,9 @@ struct TrainerBattleParameter
     u8 ptrType;
 };
 
+
+void PurgeDeadPokemon(void);
+void CompactPartySlots(void);
 static void DoSafariBattle(void);
 static void DoGhostBattle(void);
 static void DoStandardWildBattle(void);
@@ -421,6 +424,7 @@ static void StartPokedudeBattle(void)
 
 static void CB2_EndWildBattle(void)
 {
+    PurgeDeadPokemon();
     CpuFill16(0, (void *)BG_PLTT, BG_PLTT_SIZE);
     ResetOamRange(0, 128);
     if (IsPlayerDefeated(gBattleOutcome) == TRUE)
@@ -436,6 +440,7 @@ static void CB2_EndWildBattle(void)
 
 static void CB2_EndScriptedWildBattle(void)
 {
+    PurgeDeadPokemon();
     CpuFill16(0, (void *)BG_PLTT, BG_PLTT_SIZE);
     ResetOamRange(0, 128);
     if (IsPlayerDefeated(gBattleOutcome) == TRUE)
@@ -905,6 +910,7 @@ void StartTrainerBattle(void)
 
 static void CB2_EndTrainerBattle(void)
 {
+    PurgeDeadPokemon();
     if (sTrainerBattleMode == TRAINER_BATTLE_EARLY_RIVAL)
     {
         if (IsPlayerDefeated(gBattleOutcome) == TRUE)
@@ -1067,4 +1073,19 @@ const u8 *GetTrainerWonSpeech(void)
 static const u8 *GetTrainerCantBattleSpeech(void)
 {
     return ReturnEmptyStringIfNull(sTrainerCannotBattleSpeech);
+}
+
+void PurgeDeadPokemon(void)
+{
+    u8 i;
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        // Se o slot tem um Pokémon E o HP dele é 0
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) != SPECIES_NONE 
+         && GetMonData(&gPlayerParty[i], MON_DATA_HP, NULL) == 0)
+        {
+            ZeroMonData(&gPlayerParty[i]); // Apaga o Pokémon da existência
+        }
+    }
+    CompactPartySlots(); // Empurra os Pokémon vivos para frente, removendo os espaços vazios
 }
