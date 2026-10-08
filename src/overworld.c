@@ -53,6 +53,8 @@
 #include "constants/region_map_sections.h"
 #include "constants/songs.h"
 #include "constants/sound.h"
+#include "save.h"
+#include "main.h"
 
 #define PLAYER_LINK_STATE_IDLE 0x80
 #define PLAYER_LINK_STATE_BUSY 0x81
@@ -1544,25 +1546,8 @@ void CB2_NewGame(void)
 
 void CB2_WhiteOut(void)
 {
-    u8 val;
-
-    if (++gMain.state >= 120)
-    {
-        FieldClearVBlankHBlankCallbacks();
-        StopMapMusic();
-        ResetSafariZoneFlag_();
-        DoWhiteOut();
-        SetInitialPlayerAvatarStateWithDirection(DIR_NORTH);
-        ScriptContext_Init();
-        UnlockPlayerFieldControls();
-        gFieldCallback = FieldCB_RushInjuredPokemonToCenter;
-        val = 0;
-        DoMapLoadLoop(&val);
-        QuestLog_CutRecording();
-        SetFieldVBlankCallback();
-        SetMainCallback1(CB1_Overworld);
-        SetMainCallback2(CB2_Overworld);
-    }
+    ClearSaveData(); // Apaga o arquivo .sav fisicamente
+    DoSoftReset();   // Reinicia o emulador instantaneamente
 }
 
 void CB2_LoadMap(void)
