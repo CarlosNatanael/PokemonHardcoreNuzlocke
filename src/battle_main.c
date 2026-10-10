@@ -3921,6 +3921,11 @@ static void ReturnFromBattleToOverworld(void)
     }
     if (!(gBattleTypeFlags & BATTLE_TYPE_LINK) || !gReceivedRemoteLinkPlayers)
     {
+        if (gBattleOutcome == B_OUTCOME_LOST || gBattleOutcome == B_OUTCOME_DREW)
+        {
+            DoSoftReset(); // Reinicia a ROM imediatamente, sem dar hipótese ao jogador!
+        }
+
         gSpecialVar_Result = gBattleOutcome;
         gMain.inBattle = FALSE;
         gMain.callback1 = gPreBattleCallback1;
