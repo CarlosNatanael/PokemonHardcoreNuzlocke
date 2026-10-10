@@ -28,20 +28,6 @@
   "object_events": [],
   "warp_events": [
     {
-      "x": 31,
-      "y": 31,
-      "elevation": 0,
-      "dest_map": "MAP_UNDERGROUND_PATH_NORTH_ENTRANCE",
-      "dest_warp_id": "1"
-    },
-    {
-      "x": 23,
-      "y": 25,
-      "elevation": 0,
-      "dest_map": "MAP_ROUTE5_POKEMON_DAY_CARE",
-      "dest_warp_id": "1"
-    },
-    {
       "x": 24,
       "y": 32,
       "elevation": 3,
@@ -54,6 +40,13 @@
       "elevation": 3,
       "dest_map": "MAP_ROUTE5_SOUTH_ENTRANCE",
       "dest_warp_id": "1"
+    },
+    {
+      "x": 31,
+      "y": 31,
+      "elevation": 0,
+      "dest_map": "MAP_UNDERGROUND_PATH_NORTH_ENTRANCE",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [],
@@ -65,6 +58,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route5_EventScript_UndergroundPathSign"
+    },
+    {
+      "type": "sign",
+      "x": 23,
+      "y": 25,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route5_EventScript_DaycareClosed"
     }
   ]
 }
