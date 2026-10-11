@@ -93,6 +93,7 @@ BattleScript_CaughtPokemonSkipNewDex::
 BattleScript_CaughtPokemonSkipNickname::
 	givecaughtmon
 BattleScript_CaughtPokemonDone::
+	getexp BS_TARGET
 	setbyte gBattleOutcome, B_OUTCOME_CAUGHT
 	finishturn
 

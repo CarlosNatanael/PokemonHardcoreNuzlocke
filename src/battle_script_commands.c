@@ -3127,6 +3127,12 @@ u8 GetCurrentLevelCap(void)
     return 14; // Limite inicial (Brock)
 }
 
+// Só o primeiro Pokémon da party ou quem segura o Exp. Share recebe EXP compartilhado
+static bool8 DoesMonGetSharedExp(u8 partyIndex, u8 holdEffect)
+{
+    return (partyIndex == 0 || holdEffect == HOLD_EFFECT_EXP_SHARE);
+}
+
 static void Cmd_getexp(void)
 {
     u16 item;
@@ -3176,7 +3182,7 @@ static void Cmd_getexp(void)
                 else
                     holdEffect = ItemId_GetHoldEffect(item);
 
-                if (holdEffect == HOLD_EFFECT_EXP_SHARE)
+                if (DoesMonGetSharedExp(i, holdEffect))
                     viaExpShare++;
             }
 
@@ -3215,7 +3221,7 @@ static void Cmd_getexp(void)
             else
                 holdEffect = ItemId_GetHoldEffect(item);
 
-            if (holdEffect != HOLD_EFFECT_EXP_SHARE && !(gBattleStruct->sentInPokes & 1))
+            if (!DoesMonGetSharedExp(gBattleStruct->expGetterMonId, holdEffect) && !(gBattleStruct->sentInPokes & 1))
             {
                 *(&gBattleStruct->sentInPokes) >>= 1;
                 gBattleScripting.getexpState = 5;
@@ -3244,7 +3250,7 @@ static void Cmd_getexp(void)
                     else
                         gBattleMoveDamage = 0;
 
-                    if (holdEffect == HOLD_EFFECT_EXP_SHARE)
+                    if (DoesMonGetSharedExp(gBattleStruct->expGetterMonId, holdEffect))
                         gBattleMoveDamage += gExpShareExp;
                     if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
@@ -3388,6 +3394,7 @@ static void Cmd_getexp(void)
         if (gBattleControllerExecFlags == 0)
         {
             // not sure why gf clears the item and ability here
+            gBattleScripting.getexpState = 0;
             gBattleMons[gBattlerFainted].item = ITEM_NONE;
             gBattleMons[gBattlerFainted].ability = ABILITY_NONE;
             gBattlescriptCurrInstr += 2;
