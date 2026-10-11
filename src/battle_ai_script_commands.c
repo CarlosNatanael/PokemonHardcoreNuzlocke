@@ -20,6 +20,9 @@
 #define AI_ACTION_UNK8          0x0080
 
 #define AI_THINKING_STRUCT (gBattleResources->ai)
+
+// Flags de IA aplicadas a TODOS os treinadores (somadas às flags próprias de cada um)
+#define AI_FLAGS_AMPLIFIED (AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY)
 #define BATTLE_HISTORY (gBattleResources->battleHistory)
 
 // AI states
@@ -343,7 +346,7 @@ void BattleAI_SetupAIData(void)
     {
         if (gBattleTypeFlags & BATTLE_TYPE_WILD_SCRIPTED)
         {
-            AI_THINKING_STRUCT->aiFlags = AI_SCRIPT_CHECK_BAD_MOVE;
+            AI_THINKING_STRUCT->aiFlags = AI_FLAGS_AMPLIFIED;
             return;
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY_FRLG)
@@ -357,7 +360,9 @@ void BattleAI_SetupAIData(void)
         AI_THINKING_STRUCT->aiFlags = (AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY);
         return;
     }
-    AI_THINKING_STRUCT->aiFlags = gTrainers[gTrainerBattleOpponent_A].aiFlags;
+    AI_THINKING_STRUCT->aiFlags = gTrainers[gTrainerBattleOpponent_A].aiFlags | AI_FLAGS_AMPLIFIED;
+    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+        AI_THINKING_STRUCT->aiFlags |= AI_SCRIPT_DOUBLE_BATTLE;
 }
 
 u8 BattleAI_ChooseMoveOrAction(void)

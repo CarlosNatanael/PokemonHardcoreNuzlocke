@@ -5341,6 +5341,9 @@ static void Cmd_hitanimation(void)
     }
 }
 
+// Porcentagem do dinheiro de prêmio que o jogador realmente recebe (100 = normal)
+#define MONEY_REWARD_PERCENT 50
+
 static void Cmd_getmoneyreward(void)
 {
     u32 i = 0;
@@ -5396,6 +5399,7 @@ static void Cmd_getmoneyreward(void)
             party4 = gTrainers[gTrainerBattleOpponent_A].party.ItemCustomMoves; // Needed to Match. Has no effect.
             moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * (gBattleTypeFlags & BATTLE_TYPE_DOUBLE ? 2 : 1) * gTrainerMoneyTable[i].value;
         }
+        moneyReward = moneyReward * MONEY_REWARD_PERCENT / 100;
         AddMoney(&gSaveBlock1Ptr->money, moneyReward);
     }
     else
@@ -7089,7 +7093,7 @@ static void Cmd_givepaydaymoney(void)
 {
     if (!(gBattleTypeFlags & BATTLE_TYPE_LINK) && gPaydayMoney != 0)
     {
-        u32 bonusMoney = gPaydayMoney * gBattleStruct->moneyMultiplier;
+        u32 bonusMoney = gPaydayMoney * gBattleStruct->moneyMultiplier * MONEY_REWARD_PERCENT / 100;
         AddMoney(&gSaveBlock1Ptr->money, bonusMoney);
 
         PREPARE_HWORD_NUMBER_BUFFER(gBattleTextBuff1, 5, bonusMoney)
