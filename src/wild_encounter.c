@@ -13,11 +13,17 @@
 #include "script.h"
 #include "link.h"
 #include "quest_log.h"
+#include "pokedex.h"
 #include "constants/maps.h"
+#include "constants/region_map_sections.h"
 #include "constants/abilities.h"
 #include "constants/items.h"
 
 #define MAX_ENCOUNTER_RATE 1600
+
+// Quantas vezes o encontro é sorteado de novo se a espécie já foi capturada.
+// Se mesmo assim sair repetido e existir algum slot novo, ele é escolhido diretamente.
+#define MAX_DUPE_REROLLS 100
 
 #define HEADER_NONE 0xFFFF
 
@@ -266,36 +272,311 @@ enum
 #define WILD_CHECK_REPEL    0x1
 #define WILD_CHECK_KEEN_EYE 0x2
 
-static bool8 TryGenerateWildMon(const struct WildPokemonInfo * info, u8 area, u8 flags)
+// 1 = Dupes Clause padrão do Nuzlocke (a linha evolutiva inteira conta como capturada)
+// 0 = só a espécie exata conta como capturada
+#define DUPES_CLAUSE_BY_FAMILY 1
+
+extern const struct Evolution gEvolutionTable[][EVOS_PER_MON];
+
+// Retorna a pré-evolução direta da espécie, ou SPECIES_NONE se ela for a forma base
+static u16 GetPreEvolution(u16 species)
 {
-    u8 slot = 0;
-    u8 level;
+    u16 i;
+    u8 j;
+
+    for (i = 1; i < NUM_SPECIES; i++)
+    {
+        for (j = 0; j < EVOS_PER_MON; j++)
+        {
+            if (gEvolutionTable[i][j].targetSpecies == species)
+                return i;
+        }
+    }
+    return SPECIES_NONE;
+}
+
+// TRUE se a espécie, ou qualquer evolução dela, já foi capturada
+static bool8 IsSpeciesOrEvolutionsCaught(u16 species)
+{
+    u8 i;
+
+    if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_CAUGHT))
+        return TRUE;
+    for (i = 0; i < EVOS_PER_MON; i++)
+    {
+        u16 target = gEvolutionTable[species][i].targetSpecies;
+
+        if (target != SPECIES_NONE && IsSpeciesOrEvolutionsCaught(target))
+            return TRUE;
+    }
+    return FALSE;
+}
+
+static bool8 IsWildSpeciesAlreadyCaught(u16 species)
+{
+#if DUPES_CLAUSE_BY_FAMILY
+    u16 base = species;
+    u16 pre;
+
+    // Volta até a forma base da linha e confere ela e todas as evoluções
+    while ((pre = GetPreEvolution(base)) != SPECIES_NONE)
+        base = pre;
+    return IsSpeciesOrEvolutionsCaught(base);
+#else
+    return GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_CAUGHT) != 0;
+#endif
+}
+
+// ---------------------------------------------------------------------------
+// Nuzlocke: um encontro por área e por método
+// ---------------------------------------------------------------------------
+// Os métodos usam os mesmos valores de WILD_AREA_*: grama, surf, Rock Smash e pesca.
+// Cada (área x método) ocupa 1 bit em gSaveBlock1Ptr->routeEncounters.
+#define NUM_ROUTE_METHODS 4
+
+// Áreas de Kanto/Sevii usam (mapsec - KANTO_MAPSEC_START). As 4 áreas da Safari Zone
+// têm índices próprios depois delas, já que dividem o mesmo nome de mapa.
+#define NUM_MAPSEC_AREAS      (MAPSEC_COUNT - KANTO_MAPSEC_START)
+#define SAFARI_AREA_START     NUM_MAPSEC_AREAS
+#define NUM_SAFARI_AREAS      4
+#define NUM_ROUTE_AREAS       (NUM_MAPSEC_AREAS + NUM_SAFARI_AREAS)
+#define ROUTE_AREA_UNTRACKED  0xFFFF
+
+STATIC_ASSERT(ROUND_BITS_TO_BYTES(NUM_ROUTE_AREAS * NUM_ROUTE_METHODS) <= NUM_ROUTE_ENCOUNTER_BYTES, RouteEncounterBitfieldFits);
+
+static u16 GetCurrentRouteAreaId(void)
+{
+    s8 group = gSaveBlock1Ptr->location.mapGroup;
+    s8 num = gSaveBlock1Ptr->location.mapNum;
+    u16 mapSec;
+
+    // Safari Zone: cada subárea é uma "rota" própria
+    if (group == MAP_GROUP(MAP_SAFARI_ZONE_CENTER) && num == MAP_NUM(MAP_SAFARI_ZONE_CENTER))
+        return SAFARI_AREA_START + 0;
+    if (group == MAP_GROUP(MAP_SAFARI_ZONE_EAST) && num == MAP_NUM(MAP_SAFARI_ZONE_EAST))
+        return SAFARI_AREA_START + 1;
+    if (group == MAP_GROUP(MAP_SAFARI_ZONE_NORTH) && num == MAP_NUM(MAP_SAFARI_ZONE_NORTH))
+        return SAFARI_AREA_START + 2;
+    if (group == MAP_GROUP(MAP_SAFARI_ZONE_WEST) && num == MAP_NUM(MAP_SAFARI_ZONE_WEST))
+        return SAFARI_AREA_START + 3;
+
+    mapSec = Overworld_GetMapHeaderByGroupAndId(group, num)->regionMapSectionId;
+    if (mapSec < KANTO_MAPSEC_START || mapSec >= MAPSEC_COUNT)
+        return ROUTE_AREA_UNTRACKED;
+    return mapSec - KANTO_MAPSEC_START;
+}
+
+static bool8 IsRouteEncounterUsed(u8 method)
+{
+    u16 area = GetCurrentRouteAreaId();
+    u16 bit;
+
+    if (area == ROUTE_AREA_UNTRACKED)
+        return FALSE;
+    bit = area * NUM_ROUTE_METHODS + method;
+    return (gSaveBlock1Ptr->routeEncounters[bit / 8] >> (bit % 8)) & 1;
+}
+
+static void SetRouteEncounterUsed(u8 method)
+{
+    u16 area = GetCurrentRouteAreaId();
+    u16 bit;
+
+    if (area == ROUTE_AREA_UNTRACKED)
+        return;
+    bit = area * NUM_ROUTE_METHODS + method;
+    gSaveBlock1Ptr->routeEncounters[bit / 8] |= 1 << (bit % 8);
+}
+
+// Slots da tabela que o método (e a vara, na pesca) pode sortear
+static void GetWildSlotRange(u8 area, u8 rod, u8 *first, u8 *count)
+{
     switch (area)
     {
-    case WILD_AREA_LAND:
-        slot = ChooseWildMonIndex_Land();
-        break;
     case WILD_AREA_WATER:
-        slot = ChooseWildMonIndex_WaterRock();
+        *first = 0;
+        *count = WATER_WILD_COUNT;
         break;
     case WILD_AREA_ROCKS:
-        slot = ChooseWildMonIndex_WaterRock();
+        *first = 0;
+        *count = ROCK_WILD_COUNT;
         break;
+    case WILD_AREA_FISHING:
+        switch (rod)
+        {
+        case OLD_ROD:
+            *first = 0;
+            *count = 2;
+            break;
+        case GOOD_ROD:
+            *first = 2;
+            *count = 3;
+            break;
+        default: // SUPER_ROD
+            *first = 5;
+            *count = 5;
+            break;
+        }
+        break;
+    default: // WILD_AREA_LAND
+        *first = 0;
+        *count = LAND_WILD_COUNT;
+        break;
+    }
+}
+
+static u8 DrawWildSlot(u8 area, u8 rod)
+{
+    switch (area)
+    {
+    case WILD_AREA_WATER:
+    case WILD_AREA_ROCKS:
+        return ChooseWildMonIndex_WaterRock();
+    case WILD_AREA_FISHING:
+        return ChooseWildMonIndex_Fishing(rod);
+    default:
+        return ChooseWildMonIndex_Land();
+    }
+}
+
+// As regras do Nuzlocke só valem depois que o jogador recebe a Pokédex
+static bool8 IsNuzlockeRuleActive(void)
+{
+    return FlagGet(FLAG_SYS_POKEDEX_GET);
+}
+
+static bool8 IsSafariRouteArea(void)
+{
+    u16 area = GetCurrentRouteAreaId();
+
+    return area != ROUTE_AREA_UNTRACKED && area >= SAFARI_AREA_START;
+}
+
+// Encontros selvagens depois do primeiro da área continuam acontecendo (para treinar),
+// mas o Pokémon não pode ser capturado. Em vez de uma flag que poderia ficar "velha"
+// (roamers, encontros por script), guardamos a espécie e a personalidade do Pokémon
+// gerado: só aquele Pokémon específico é considerado não capturável.
+static EWRAM_DATA u16 sUncatchableSpecies = SPECIES_NONE;
+static EWRAM_DATA u32 sUncatchablePersonality = 0;
+
+static void SetCurrentWildMonUncatchable(bool8 uncatchable)
+{
+    if (uncatchable)
+    {
+        sUncatchableSpecies = GetMonData(&gEnemyParty[0], MON_DATA_SPECIES);
+        sUncatchablePersonality = GetMonData(&gEnemyParty[0], MON_DATA_PERSONALITY);
+    }
+    else
+    {
+        sUncatchableSpecies = SPECIES_NONE;
+    }
+}
+
+// Usado em Cmd_handleballthrow (battle_script_commands.c)
+bool8 IsCurrentWildMonUncatchable(void)
+{
+    if (sUncatchableSpecies == SPECIES_NONE)
+        return FALSE;
+    return GetMonData(&gEnemyParty[0], MON_DATA_SPECIES) == sUncatchableSpecies
+        && GetMonData(&gEnemyParty[0], MON_DATA_PERSONALITY) == sUncatchablePersonality;
+}
+
+// Escolhe o slot respeitando a Dupes Clause.
+// *freeRoute = TRUE quando TODAS as espécies do método já foram capturadas: a rota é "livre",
+// o sorteio fica normal e o encontro não é consumido.
+static u8 ChooseWildSlot(const struct WildPokemonInfo * info, u8 area, u8 rod, bool8 *freeRoute)
+{
+    bool8 isDupe[LAND_WILD_COUNT] = {FALSE};
+    u8 first, count, i, slot, rerolls;
+    u8 firstNew = 0xFF;
+
+    GetWildSlotRange(area, rod, &first, &count);
+    for (i = first; i < first + count; i++)
+    {
+        isDupe[i] = IsWildSpeciesAlreadyCaught(info->wildPokemon[i].species);
+        if (!isDupe[i] && firstNew == 0xFF)
+            firstNew = i;
+    }
+
+    slot = DrawWildSlot(area, rod);
+    if (firstNew == 0xFF)
+    {
+        *freeRoute = TRUE;
+        return slot;
+    }
+
+    *freeRoute = FALSE;
+    for (rerolls = 0; isDupe[slot] && rerolls < MAX_DUPE_REROLLS; rerolls++)
+        slot = DrawWildSlot(area, rod);
+    if (isDupe[slot])
+        slot = firstNew; // garante um Pokémon novo mesmo quando o slot novo é raro
+    return slot;
+}
+
+static bool8 TryGenerateWildMon(const struct WildPokemonInfo * info, u8 area, u8 flags)
+{
+    u8 slot;
+    u8 level;
+    bool8 freeRoute = FALSE;
+    bool8 uncatchable = FALSE;
+
+    if (!IsNuzlockeRuleActive())
+    {
+        // Antes da Pokédex: encontros normais, sem regras
+        slot = DrawWildSlot(area, 0);
+    }
+    else if (IsRouteEncounterUsed(area))
+    {
+        // O encontro capturável desta área já foi usado.
+        // Safari Zone não tem treino, então ela para de gerar encontros.
+        if (IsSafariRouteArea())
+            return FALSE;
+        // No resto, a batalha continua (para treinar), mas sem captura e sem Dupes Clause.
+        slot = DrawWildSlot(area, 0);
+        uncatchable = TRUE;
+    }
+    else
+    {
+        // Primeiro encontro da área: é o capturável, com Dupes Clause
+        slot = ChooseWildSlot(info, area, 0, &freeRoute);
     }
     level = ChooseWildMonLevel(&info->wildPokemon[slot]);
     if (flags == WILD_CHECK_REPEL && !IsWildLevelAllowedByRepel(level))
     {
         return FALSE;
     }
+    if (IsNuzlockeRuleActive() && !uncatchable && !freeRoute)
+        SetRouteEncounterUsed(area);
     GenerateWildMon(info->wildPokemon[slot].species, level, slot);
+    SetCurrentWildMonUncatchable(uncatchable);
     return TRUE;
 }
 
 static u16 GenerateFishingEncounter(const struct WildPokemonInfo * info, u8 rod)
 {
-    u8 slot = ChooseWildMonIndex_Fishing(rod);
-    u8 level = ChooseWildMonLevel(&info->wildPokemon[slot]);
+    u8 slot;
+    u8 level;
+    bool8 freeRoute = FALSE;
+    bool8 uncatchable = FALSE;
+
+    if (!IsNuzlockeRuleActive())
+    {
+        slot = ChooseWildMonIndex_Fishing(rod);
+    }
+    else if (IsRouteEncounterUsed(WILD_AREA_FISHING))
+    {
+        slot = ChooseWildMonIndex_Fishing(rod);
+        uncatchable = TRUE;
+    }
+    else
+    {
+        slot = ChooseWildSlot(info, WILD_AREA_FISHING, rod, &freeRoute);
+    }
+    level = ChooseWildMonLevel(&info->wildPokemon[slot]);
+    if (IsNuzlockeRuleActive() && !uncatchable && !freeRoute)
+        SetRouteEncounterUsed(WILD_AREA_FISHING);
     GenerateWildMon(info->wildPokemon[slot].species, level, slot);
+    SetCurrentWildMonUncatchable(uncatchable);
     return info->wildPokemon[slot].species;
 }
 
@@ -481,7 +762,9 @@ bool8 SweetScentWildEncounter(void)
             if (gWildMonHeaders[headerId].landMonsInfo == NULL)
                 return FALSE;
 
-            TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, 0);
+            // Só falha na Safari Zone (encontro da subárea já usado) ou pelo Repel
+            if (!TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, 0))
+                return FALSE;
 
             StartWildBattle();
             return TRUE;
@@ -497,7 +780,8 @@ bool8 SweetScentWildEncounter(void)
             if (gWildMonHeaders[headerId].waterMonsInfo == NULL)
                 return FALSE;
 
-            TryGenerateWildMon(gWildMonHeaders[headerId].waterMonsInfo, WILD_AREA_WATER, 0);
+            if (!TryGenerateWildMon(gWildMonHeaders[headerId].waterMonsInfo, WILD_AREA_WATER, 0))
+                return FALSE;
             StartWildBattle();
             return TRUE;
         }
@@ -512,6 +796,9 @@ bool8 DoesCurrentMapHaveFishingMons(void)
     if (headerIdx == HEADER_NONE)
         return FALSE;
     if (gWildMonHeaders[headerIdx].fishingMonsInfo == NULL)
+        return FALSE;
+    // Nuzlocke: na Safari Zone (sem treino) a pesca para depois do encontro da subárea
+    if (IsNuzlockeRuleActive() && IsSafariRouteArea() && IsRouteEncounterUsed(WILD_AREA_FISHING))
         return FALSE;
     return TRUE;
 }

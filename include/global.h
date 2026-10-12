@@ -756,6 +756,11 @@ struct ExternalEventFlags
 
 } __attribute__((packed));/*size = 0x15*/
 
+// Nuzlocke: bytes reservados em SaveBlock1 para marcar quais áreas já tiveram seu encontro.
+// Usa 1 bit por (área x método). Sai do espaço antes inutilizado em unused_348C,
+// então o tamanho total de SaveBlock1 (e o layout do save) não muda.
+#define NUM_ROUTE_ENCOUNTER_BYTES 64
+
 struct SaveBlock1
 {
     /*0x0000*/ struct Coords16 pos;
@@ -806,7 +811,8 @@ struct SaveBlock1
     /*0x30D0*/ struct Roamer roamer;
     /*0x30EC*/ struct EnigmaBerry enigmaBerry;
     /*0x3120*/ struct MysteryGiftSave mysteryGift;
-    /*0x348C*/ u8 unused_348C[400];
+    /*0x348C*/ u8 routeEncounters[NUM_ROUTE_ENCOUNTER_BYTES]; // Nuzlocke: um encontro por área/método
+    /*0x34CC*/ u8 unused_348C[400 - NUM_ROUTE_ENCOUNTER_BYTES];
     /*0x361C*/ struct RamScript ramScript;
     /*0x3A08*/ struct RecordMixingGift recordMixingGift; // unused
     /*0x3A18*/ u8 seen2[DEX_FLAGS_NO];

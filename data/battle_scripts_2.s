@@ -73,6 +73,7 @@ BattleScript_ThrowSafariBall::
 BattleScript_SuccessBallThrow::
 	jumpifhalfword CMP_EQUAL, gLastUsedItem, ITEM_SAFARI_BALL, BattleScript_SafariNoIncGameStat
 	incrementgamestat GAME_STAT_POKEMON_CAPTURES
+	getexp BS_TARGET
 BattleScript_SafariNoIncGameStat::
 	printstring STRINGID_GOTCHAPKMNCAUGHT
 	trysetcaughtmondexflags BattleScript_CaughtPokemonSkipNewDex
@@ -93,7 +94,6 @@ BattleScript_CaughtPokemonSkipNewDex::
 BattleScript_CaughtPokemonSkipNickname::
 	givecaughtmon
 BattleScript_CaughtPokemonDone::
-	getexp BS_TARGET
 	setbyte gBattleOutcome, B_OUTCOME_CAUGHT
 	finishturn
 

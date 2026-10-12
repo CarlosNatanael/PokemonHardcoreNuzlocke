@@ -9488,6 +9488,9 @@ static void Cmd_removelightscreenreflect(void)
     gBattlescriptCurrInstr++;
 }
 
+// Definido em wild_encounter.c (Nuzlocke: Pokémon de um encontro de rota já usado não pode ser capturado)
+extern bool8 IsCurrentWildMonUncatchable(void);
+
 static void Cmd_handleballthrow(void)
 {
     u8 ballMultiplier = 0;
@@ -9509,6 +9512,13 @@ static void Cmd_handleballthrow(void)
         BtlController_EmitBallThrowAnim(BUFFER_A, BALL_TRAINER_BLOCK);
         MarkBattlerForControllerExec(gActiveBattler);
         gBattlescriptCurrInstr = BattleScript_TrainerBallBlock;
+    }
+    else if (IsCurrentWildMonUncatchable())
+    {
+        // Reaproveita a mensagem "It dodged the thrown BALL! This POKéMON can't be caught!"
+        BtlController_EmitBallThrowAnim(BUFFER_A, BALL_GHOST_DODGE);
+        MarkBattlerForControllerExec(gActiveBattler);
+        gBattlescriptCurrInstr = BattleScript_GhostBallDodge;
     }
     else if (gBattleTypeFlags & (BATTLE_TYPE_POKEDUDE | BATTLE_TYPE_OLD_MAN_TUTORIAL))
     {
