@@ -3115,16 +3115,16 @@ u8 GetCurrentLevelCap(void)
     // Se o jogador já venceu a Elite 4, o limite volta a ser 100
     if (FlagGet(FLAG_SYS_GAME_CLEAR)) return MAX_LEVEL;
 
-    if (FlagGet(FLAG_BADGE08_GET)) return 63; // Limite E4 (ex: Campeão/Lorelei)
-    if (FlagGet(FLAG_BADGE07_GET)) return 50; // Limite pós-Giovanni
-    if (FlagGet(FLAG_BADGE06_GET)) return 47; // Limite pós-Blaine
-    if (FlagGet(FLAG_BADGE05_GET)) return 43; // Limite pós-Sabrina
-    if (FlagGet(FLAG_BADGE04_GET)) return 43; // Limite pós-Koga
-    if (FlagGet(FLAG_BADGE03_GET)) return 29; // Limite pós-Erika
-    if (FlagGet(FLAG_BADGE02_GET)) return 24; // Limite pós-Surge
-    if (FlagGet(FLAG_BADGE01_GET)) return 21; // Limite pós-Misty
+    if (FlagGet(FLAG_BADGE08_GET)) return 73; // Limite E4
+    if (FlagGet(FLAG_BADGE07_GET)) return 65; // Limite LANCE
+    if (FlagGet(FLAG_BADGE06_GET)) return 55; // Limite KOGA&SABRI
+    if (FlagGet(FLAG_BADGE05_GET)) return 50; // Limite BLAINE
+    if (FlagGet(FLAG_BADGE04_GET)) return 45; // Limite WINONA
+    if (FlagGet(FLAG_BADGE03_GET)) return 31; // Limite NORMAN
+    if (FlagGet(FLAG_BADGE02_GET)) return 26; // Limite WATTSON
+    if (FlagGet(FLAG_BADGE01_GET)) return 23; // Limite BRAWLY
     
-    return 14; // Limite inicial (Brock)
+    return 15; // Limite inicial (Brock)
 }
 
 // Só o primeiro Pokémon da party ou quem segura o Exp. Share recebe EXP compartilhado

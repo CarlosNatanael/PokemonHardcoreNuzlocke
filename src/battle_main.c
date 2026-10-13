@@ -42,6 +42,7 @@
 #include "constants/pokemon.h"
 #include "constants/songs.h"
 #include "constants/trainers.h"
+#include "save.h"
 
 static void SpriteCB_UnusedDebugSprite(struct Sprite *sprite);
 static void HandleAction_UseMove(void);
@@ -3923,7 +3924,8 @@ static void ReturnFromBattleToOverworld(void)
     {
         if (gBattleOutcome == B_OUTCOME_LOST || gBattleOutcome == B_OUTCOME_DREW)
         {
-            DoSoftReset(); // Reinicia a ROM imediatamente, sem dar hipótese ao jogador!
+            ClearSaveData();   // apaga todos os setores de save na flash
+            DoSoftReset();
         }
 
         gSpecialVar_Result = gBattleOutcome;

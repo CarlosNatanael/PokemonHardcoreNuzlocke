@@ -33,5 +33,6 @@ void ShowTrainerCantBattleSpeech(void);
 void PlayTrainerEncounterMusic(void);
 const u8 *GetTrainerALoseText(void);
 const u8 *GetTrainerWonSpeech(void);
+void PurgeDeadPokemon(void);
 
 #endif // GUARD_BATTLE_SETUP_H

@@ -9,6 +9,8 @@
 #include "party_menu.h"
 #include "field_poison.h"
 #include "constants/battle.h"
+#include "save.h"           // para ClearSaveData
+#include "battle_setup.h"   // para PurgeDeadPokemon (ver nota abaixo)
 
 static bool32 IsMonValidSpecies(struct Pokemon *pokemon)
 {
@@ -73,10 +75,13 @@ static void Task_TryFieldPoisonWhiteOut(u8 taskId)
             tState--;
         break;
     case 2:
-        if (AllMonsFainted())
-            gSpecialVar_Result = TRUE;
-        else
-            gSpecialVar_Result = FALSE;
+        PurgeDeadPokemon();        // apaga quem desmaiou de veneno
+        if (AllMonsFainted())      // após o purge, TRUE só se a party ficou vazia
+        {
+            ClearSaveData();
+            DoSoftReset();         // não retorna
+        }
+        gSpecialVar_Result = FALSE;
         ScriptContext_Enable();
         DestroyTask(taskId);
         break;
