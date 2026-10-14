@@ -47,8 +47,8 @@ VermilionCity_Text_PokemonFanClubSign::
 
 VermilionCity_Text_GymSign::
     .string "VERMILION CITY POKéMON GYM\n"
-    .string "LEADER: LT. SURGE\l"
-    .string "The Lightning American!$"
+    .string "LEADER: WATTSON\l"
+    .string "The cheerfully electrifying man!$"
 
 VermilionCity_Text_VermilionHarbor::
     .string "VERMILION HARBOR$"

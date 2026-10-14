@@ -1824,8 +1824,8 @@
                 "species": "SPECIES_DIGLETT"
               },
               {
-                "min_level": 29,
-                "max_level": 29,
+                "min_level": 26,
+                "max_level": 26,
                 "species": "SPECIES_DUGTRIO"
               },
               {
@@ -1834,8 +1834,8 @@
                 "species": "SPECIES_DIGLETT"
               },
               {
-                "min_level": 31,
-                "max_level": 31,
+                "min_level": 26,
+                "max_level": 26,
                 "species": "SPECIES_DUGTRIO"
               }
             ]
