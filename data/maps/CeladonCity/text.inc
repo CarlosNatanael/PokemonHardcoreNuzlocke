@@ -49,8 +49,8 @@ CeladonCity_Text_CitySign::
 
 CeladonCity_Text_GymSign::
     .string "CELADON CITY POKéMON GYM\n"
-    .string "LEADER: ERIKA\l"
-    .string "The Nature-Loving Princess!$"
+    .string "LEADER: NORMAN\l"
+    .string "The Nature Pokemon!$"
 
 CeladonCity_Text_MansionSign::
     .string "CELADON MANSION$"
