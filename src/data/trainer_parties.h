@@ -3507,18 +3507,41 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BirdKeeperMarlon[] = {
     },
 };
 
-static const struct TrainerMonItemDefaultMoves sParty_BlackBeltKoichi[] = {
+static const struct TrainerMonItemCustomMoves sParty_BlackBeltKoichi[] = {
     {
-        .iv = 151,
+        .iv = 31,
         .lvl = 37,
         .species = SPECIES_HITMONTOP,
-        .heldItem = ITEM_BLACK_BELT,
+        .heldItem = ITEM_SITRUS_BERRY,
+        .moves = {MOVE_FAKE_OUT, MOVE_BRICK_BREAK, MOVE_MACH_PUNCH, MOVE_EARTHQUAKE},
     },
     {
-        .iv = 151,
+        .iv = 31,
         .lvl = 37,
         .species = SPECIES_MEDICHAM,
+        .heldItem = ITEM_LUM_BERRY,
+        .moves = {MOVE_FAKE_OUT, MOVE_HI_JUMP_KICK, MOVE_SHADOW_BALL, MOVE_ROCK_TOMB},
+    },
+    {
+        .iv = 31,
+        .lvl = 38,
+        .species = SPECIES_HITMONCHAN,
         .heldItem = ITEM_BLACK_BELT,
+        .moves = {MOVE_MACH_PUNCH, MOVE_FIRE_PUNCH, MOVE_ICE_PUNCH, MOVE_THUNDER_PUNCH},
+    },
+    {
+        .iv = 31,
+        .lvl = 38,
+        .species = SPECIES_HITMONLEE,
+        .heldItem = ITEM_SALAC_BERRY,
+        .moves = {MOVE_REVERSAL, MOVE_ENDURE, MOVE_MACH_PUNCH, MOVE_ROCK_SLIDE},
+    },
+    {
+        .iv = 31,
+        .lvl = 40,
+        .species = SPECIES_MACHAMP,
+        .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_CROSS_CHOP, MOVE_ROCK_SLIDE, MOVE_EARTHQUAKE, MOVE_FACADE},
     },
 };
 
@@ -3564,6 +3587,16 @@ static const struct TrainerMonItemDefaultMoves sParty_BlackBeltAaron[] = {
         .lvl = 36,
         .species = SPECIES_AIPOM,
         .heldItem = ITEM_BLACK_BELT,
+    },
+    {
+        .iv = 130,
+        .lvl = 35,
+        .species = SPECIES_MACHOKE,
+    },
+    {
+        .iv = 130,
+        .lvl = 35,
+        .species = SPECIES_PRIMEAPE,
     },
 };
 

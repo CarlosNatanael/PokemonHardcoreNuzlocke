@@ -3165,12 +3165,12 @@ const struct Trainer gTrainers[] = {
     [TRAINER_BLACK_BELT_KOICHI] = {
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
-        .trainerPic = TRAINER_PIC_BLACK_BELT,
-        .trainerName = _("KOICHI"),
+        .trainerPic = TRAINER_PIC_ELITE_FOUR_BRUNO,
+        .trainerName = _("BRUNO"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = ITEM_DEFAULT_MOVES(sParty_BlackBeltKoichi),
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
+        .party = ITEM_CUSTOM_MOVES(sParty_BlackBeltKoichi),
     },
     [TRAINER_BLACK_BELT_MIKE] = {
         .trainerClass = TRAINER_CLASS_BLACK_BELT,
