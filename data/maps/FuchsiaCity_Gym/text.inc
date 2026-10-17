@@ -1,156 +1,152 @@
 FuchsiaCity_Gym_Text_KogaIntro::
-    .string "KOGA: Fwahahaha!\p"
-    .string "A mere child like you dares to\n"
-    .string "challenge me?\p"
-    .string "The very idea makes me shiver\n"
-    .string "with mirth!\p"
-    .string "Very well, I shall show you true\n"
-    .string "terror as a ninja master.\p"
-    .string "Poison brings steady doom.\n"
-    .string "Sleep renders foes helpless.\p"
-    .string "Despair to the creeping horror of\n"
-    .string "POISON-type POKéMON!{PLAY_BGM}{MUS_ENCOUNTER_GYM_LEADER}$"
+    .string "I am WINONA. I am the LEADER of\n"
+    .string "this GYM.\p"
+    .string "I have become one with a bird POKéMON\n"
+    .string "and have soared the skies…\p"
+    .string "However grueling the battle, we have\n"
+    .string "triumphed with grace…\p"
+    .string "These invisible walls represent the\n"
+    .string "unseen currents of the wind.\p"
+    .string "Witness the elegant choreography\n"
+    .string "of my bird POKéMON!{PLAY_BGM}{MUS_ENCOUNTER_GYM_LEADER}$"
 
 FuchsiaCity_Gym_Text_KogaDefeat::
-    .string "Humph!\n"
-    .string "You have proven your worth!\p"
-    .string "Here!\n"
-    .string "Take the SOULBADGE!$"
+    .string "A bird caught in a fierce storm…\n"
+    .string "I have been grounded.\p"
+    .string "Your strength is undeniably real.\p"
+    .string "Please, take the FEATHERBADGE.$"
 
 FuchsiaCity_Gym_Text_KogaPostBattle::
-    .string "When afflicted by TOXIC, a POKéMON\n"
-    .string "suffers more and more.\p"
-    .string "It suffers worsening damage as the\n"
-    .string "battle wears on!\p"
-    .string "It will surely terrorize foes!$"
+    .string "Just as the wind blows unpredictably,\n"
+    .string "a true TRAINER must be ready to adapt\l"
+    .string "to any situation.\p"
+    .string "May you continue to soar high!$"
 
 FuchsiaCity_Gym_Text_KogaExplainSoulBadge::
-    .string "Now that you have the SOULBADGE,\n"
-    .string "the DEFENSE of your POKéMON rises.\p"
-    .string "It also lets you SURF outside of\n"
-    .string "battle.\p"
-    .string "Ah!\n"
-    .string "Take this, too!$"
+    .string "Now that you have the FEATHERBADGE,\n"
+    .string "your POKéMON will become swifter.\p"
+    .string "It also allows you to use SURF\n"
+    .string "outside of battle.\p"
+    .string "Ah, and this is a gift from me\n"
+    .string "to you.$"
 
 FuchsiaCity_Gym_Text_ReceivedTM06FromKoga::
-    .string "{PLAYER} received TM06\n"
-    .string "from KOGA.$"
+    .string "{PLAYER} received TM40\n"
+    .string "from WINONA.$"
 
 FuchsiaCity_Gym_Text_KogaExplainTM06::
-    .string "Sealed within that TM06 lies\n"
-    .string "TOXIC!\p"
-    .string "It is a secret technique dating\n"
-    .string "back some four hundred years.$"
+    .string "TM40 contains AERIAL ACE.\p"
+    .string "Its speed defies the eye.\n"
+    .string "It is an elegant attack that will\l"
+    .string "never miss its target!$"
 
 FuchsiaCity_Gym_Text_MakeSpaceForThis::
-    .string "Make space for this, child!$"
+    .string "Please make space for this.$"
 
 FuchsiaCity_Gym_Text_KaydenIntro::
-    .string "Strength isn't the key for POKéMON.\n"
+    .string "Strength alone cannot conquer the sky.\n"
     .string "Do you understand this?\p"
-    .string "POKéMON is about strategy!\p"
-    .string "I'll show you how strategy can\n"
-    .string "beat brute strength.$"
+    .string "The wind favors strategy!\p"
+    .string "I'll show you how altitude beats\n"
+    .string "raw power.$"
 
 FuchsiaCity_Gym_Text_KaydenDefeat::
     .string "What?\n"
-    .string "Extraordinary!$"
+    .string "Shot down!$"
 
 FuchsiaCity_Gym_Text_KaydenPostBattle::
-    .string "So, you mix brawn with brains?\n"
-    .string "Good strategy!\p"
-    .string "That's remarkable for a child\n"
-    .string "TRAINER.$"
+    .string "You navigate the battlefield\n"
+    .string "like a seasoned pilot.\p"
+    .string "WINONA will be a tough challenge.$"
 
 FuchsiaCity_Gym_Text_KirkIntro::
-    .string "I was a magician once upon a time.\p"
-    .string "But I dreamt of becoming a ninja,\n"
-    .string "so I joined this GYM.$"
+    .string "I used to juggle Poké Balls.\p"
+    .string "Now, I juggle the intense air pressure\n"
+    .string "of this GYM!$"
 
 FuchsiaCity_Gym_Text_KirkDefeat::
-    .string "I'm done for!$"
+    .string "I dropped them all!$"
 
 FuchsiaCity_Gym_Text_KirkPostBattle::
-    .string "Even though I've lost, I will keep\n"
-    .string "training according to the teachings\l"
-    .string "of KOGA, my ninja master.$"
+    .string "WINONA's grace in battle is\n"
+    .string "something I strive to achieve.$"
 
 FuchsiaCity_Gym_Text_NateIntro::
-    .string "Let's see you beat my special\n"
-    .string "techniques!$"
+    .string "Let's see if you can withstand\n"
+    .string "our hurricane winds!$"
 
 FuchsiaCity_Gym_Text_NateDefeat::
-    .string "You had me fooled!$"
+    .string "Blown away!$"
 
 FuchsiaCity_Gym_Text_NatePostBattle::
-    .string "I like poison and sleep techniques,\n"
-    .string "as they linger after battle!$"
+    .string "FLYING-type POKéMON can strike\n"
+    .string "before you even realize it!$"
 
 FuchsiaCity_Gym_Text_PhilIntro::
     .string "Stop right there!\p"
-    .string "The famed invisible walls of\n"
-    .string "FUCHSIA GYM have you frustrated?$"
+    .string "Do the invisible walls of this GYM\n"
+    .string "have you frustrated?$"
 
 FuchsiaCity_Gym_Text_PhilDefeat::
     .string "Whoa!\n"
-    .string "You've got it!$"
+    .string "You found my blind spot!$"
 
 FuchsiaCity_Gym_Text_PhilPostBattle::
-    .string "You impressed me!\n"
-    .string "Here's a hint!\p"
-    .string "Look very closely for gaps in the\n"
-    .string "invisible walls!$"
+    .string "These walls are like invisible\n"
+    .string "wind currents.\p"
+    .string "Look closely, and you'll find\n"
+    .string "the calm path through the storm!$"
 
 FuchsiaCity_Gym_Text_EdgarIntro::
-    .string "I also study the way of the ninja\n"
-    .string "with Master KOGA!\p"
-    .string "Ninja have a long history of using\n"
-    .string "animals!$"
+    .string "We study the elegance of the sky\n"
+    .string "with WINONA!\p"
+    .string "Prepare for a dive attack!$"
 
 FuchsiaCity_Gym_Text_EdgarDefeat::
-    .string "Awoo!$"
+    .string "Crashed!$"
 
 FuchsiaCity_Gym_Text_EdgarPostBattle::
-    .string "I still have much to learn.$"
+    .string "I need to lighten my load if I\n"
+    .string "want to fly faster.$"
 
 FuchsiaCity_Gym_Text_ShawnIntro::
-    .string "Master KOGA comes from a long line\n"
-    .string "of ninjas.\p"
-    .string "What did you descend from?$"
+    .string "WINONA comes from a distant region\n"
+    .string "where the skies are beautiful.\p"
+    .string "Can you match her grace?$"
 
 FuchsiaCity_Gym_Text_ShawnDefeat::
     .string "You're more skilled than I'd\n"
     .string "thought!$"
 
 FuchsiaCity_Gym_Text_ShawnPostBattle::
-    .string "Where there is light, there is\n"
-    .string "shadow!\p"
-    .string "Light and shadow!\n"
-    .string "Which do you choose?$"
+    .string "The sky has no limits, and neither\n"
+    .string "should your potential!$"
 
 FuchsiaCity_Gym_Text_GymGuyAdvice::
     .string "Yo!\n"
     .string "Champ in the making!\p"
-    .string "FUCHSIA GYM is a tricked-up place.\n"
-    .string "It's riddled with invisible walls!\p"
-    .string "KOGA might appear close, but he's\n"
-    .string "blocked off.\p"
-    .string "You have to find gaps in the walls\n"
-    .string "to reach him.$"
+    .string "FUCHSIA GYM has been taken over by\n"
+    .string "WINONA, a master of FLYING types.\p"
+    .string "ELECTRIC, ICE, and ROCK moves are\n"
+    .string "your best friends here.\p"
+    .string "But beware, she's hidden behind\n"
+    .string "a maze of invisible walls!\p"
+    .string "You'll have to feel the wind to\n"
+    .string "find your way through.$"
 
 FuchsiaCity_Gym_Text_GymGuyPostVictory::
-    .string "It's amazing how ninja can terrify,\n"
-    .string "even now!$"
+    .string "It's amazing how she battles with\n"
+    .string "such elegance, even now!$"
 
 FuchsiaCity_Gym_Text_GymStatue::
     .string "FUCHSIA POKéMON GYM\n"
-    .string "LEADER: KOGA\p"
+    .string "LEADER: WINONA\p"
     .string "WINNING TRAINERS:\n"
     .string "{RIVAL}$"
 
 FuchsiaCity_Gym_Text_GymStatuePlayerWon::
     .string "FUCHSIA POKéMON GYM\n"
-    .string "LEADER: KOGA\p"
+    .string "LEADER: WINONA\p"
     .string "WINNING TRAINERS:\n"
     .string "{RIVAL}, {PLAYER}$"
 
