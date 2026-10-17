@@ -2909,53 +2909,38 @@ static const struct TrainerMonNoItemDefaultMoves sParty_SwimmerFemaleShirley[] =
 static const struct TrainerMonNoItemDefaultMoves sParty_PsychicJohan[] = {
     {
         .iv = 133,
-        .lvl = 31,
+        .lvl = 46,
         .species = SPECIES_XATU,
     },
     {
         .iv = 133,
-        .lvl = 31,
-        .species = SPECIES_WAILMER,
-    },
-    {
-        .iv = 133,
-        .lvl = 31,
-        .species = SPECIES_BALTOY,
-    },
-    {
-        .iv = 133,
-        .lvl = 31,
-        .species = SPECIES_GARDEVOIR,
+        .lvl = 46,
+        .species = SPECIES_TENTACRUEL,
     },
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_PsychicTyron[] = {
-    {
+{
         .iv = 142,
-        .lvl = 34,
-        .species = SPECIES_CHIMECHO,
+        .lvl = 46,
+        .species = SPECIES_MUK,
     },
     {
         .iv = 142,
-        .lvl = 34,
+        .lvl = 46,
         .species = SPECIES_GARDEVOIR,
     },
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_PsychicCameron[] = {
-    {
+   {
         .iv = 139,
-        .lvl = 33,
-        .species = SPECIES_WAILMER,
+        .lvl = 47,
+        .species = SPECIES_WOBBUFFET, // A armadilha mortal do Nuzlocke
     },
     {
         .iv = 139,
-        .lvl = 33,
-        .species = SPECIES_TORKOAL,
-    },
-    {
-        .iv = 139,
-        .lvl = 33,
+        .lvl = 47,
         .species = SPECIES_SLAKING,
     },
 };
@@ -2963,8 +2948,13 @@ static const struct TrainerMonNoItemDefaultMoves sParty_PsychicCameron[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_PsychicPreston[] = {
     {
         .iv = 154,
-        .lvl = 38,
-        .species = SPECIES_WAILORD,
+        .lvl = 46,
+        .species = SPECIES_HYPNO,
+    },
+    {
+        .iv = 154,
+        .lvl = 46,
+        .species = SPECIES_GOLBAT,
     },
 };
 
@@ -5701,47 +5691,53 @@ static const struct TrainerMonItemCustomMoves sParty_LeaderBlaine[] = {
 };
 
 static const struct TrainerMonItemCustomMoves sParty_LeaderSabrina[] = {
+    // Lead 1 (Koga): Velocidade extrema e controle
     {
-        .iv = 230,
-        .lvl = 55,
+        .iv = 31,
+        .lvl = 50,
         .species = SPECIES_CROBAT,
-        .heldItem = ITEM_NONE,
-        .moves = {MOVE_AERIAL_ACE, MOVE_SLUDGE_BOMB, MOVE_TOXIC, MOVE_CONFUSE_RAY},
+        .heldItem = ITEM_LUM_BERRY,
+        .moves = {MOVE_SLUDGE_BOMB, MOVE_AERIAL_ACE, MOVE_TAUNT, MOVE_PROTECT},
     },
+    // Lead 2 (Sabrina): Telas para proteger o time inteiro
     {
-        .iv = 230,
-        .lvl = 55,
-        .species = SPECIES_GARDEVOIR,
-        .heldItem = ITEM_LEFTOVERS,
-        .moves = {MOVE_PSYCHIC, MOVE_SHADOW_BALL, MOVE_CALM_MIND, MOVE_WILL_O_WISP},
-    },
-    {
-        .iv = 230,
+        .iv = 31,
         .lvl = 50,
-        .species = SPECIES_ARIADOS,
-        .heldItem = ITEM_NONE,
-        .moves = {MOVE_SLUDGE_BOMB, MOVE_TOXIC, MOVE_SPIDER_WEB, MOVE_PIN_MISSILE},
-    },
-    {
-        .iv = 230,
-        .lvl = 45,
         .species = SPECIES_ESPEON,
-        .heldItem = ITEM_NONE,
-        .moves = {MOVE_PSYCHIC, MOVE_SHADOW_BALL, MOVE_MORNING_SUN, MOVE_REFLECT},
+        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_PSYCHIC, MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_PROTECT},
     },
+    // Mid 1 (Koga): Imune a Earthquake, ameaça de Explosão
     {
-        .iv = 230,
-        .lvl = 50,
-        .species = SPECIES_SWALOT,
+        .iv = 31,
+        .lvl = 51,
+        .species = SPECIES_WEEZING,
         .heldItem = ITEM_SITRUS_BERRY,
-        .moves = {MOVE_SLUDGE_BOMB, MOVE_SHADOW_BALL, MOVE_YAWN, MOVE_EARTHQUAKE},
+        .moves = {MOVE_SLUDGE_BOMB, MOVE_FLAMETHROWER, MOVE_THUNDERBOLT, MOVE_EXPLOSION},
     },
+    // Mid 2 (Sabrina): Imune a Poison e combos com Weezing
     {
-        .iv = 230,
-        .lvl = 50,
+        .iv = 31,
+        .lvl = 51,
         .species = SPECIES_CLAYDOL,
-        .heldItem = ITEM_NONE,
-        .moves = {MOVE_PSYCHIC, MOVE_EARTHQUAKE, MOVE_RAPID_SPIN, MOVE_COSMIC_POWER},
+        .heldItem = ITEM_SITRUS_BERRY,
+        .moves = {MOVE_EARTHQUAKE, MOVE_PSYCHIC, MOVE_ICE_BEAM, MOVE_PROTECT},
+    },
+    // Late 1 (Koga): Tanque chato para espalhar status
+    {
+        .iv = 31,
+        .lvl = 52,
+        .species = SPECIES_SWALOT,
+        .heldItem = ITEM_CHESTO_BERRY,
+        .moves = {MOVE_SLUDGE_BOMB, MOVE_YAWN, MOVE_SHADOW_BALL, MOVE_REST},
+    },
+    // Late 2 (Sabrina): Varredor final
+    {
+        .iv = 31,
+        .lvl = 53,
+        .species = SPECIES_ALAKAZAM,
+        .heldItem = ITEM_LUM_BERRY,
+        .moves = {MOVE_PSYCHIC, MOVE_FIRE_PUNCH, MOVE_THUNDER_PUNCH, MOVE_RECOVER},
     },
 };
 
@@ -6472,39 +6468,39 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Channeler8[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_ChannelerAmanda[] = {
     {
         .iv = 142,
-        .lvl = 34,
+        .lvl = 45,
         .species = SPECIES_DUSCLOPS,
     },
     {
         .iv = 142,
-        .lvl = 34,
-        .species = SPECIES_MISDREAVUS,
+        .lvl = 46,
+        .species = SPECIES_GENGAR,
     },
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_ChannelerStacy[] = {
     {
         .iv = 154,
-        .lvl = 38,
-        .species = SPECIES_DUSCLOPS,
+        .lvl = 47,
+        .species = SPECIES_KADABRA,
+    },
+    {
+        .iv = 154,
+        .lvl = 47,
+        .species = SPECIES_VENOMOTH,
     },
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_ChannelerTasha[] = {
     {
         .iv = 139,
-        .lvl = 33,
-        .species = SPECIES_DUSKULL,
-    },
-    {
-        .iv = 139,
-        .lvl = 33,
+        .lvl = 45,
         .species = SPECIES_MISDREAVUS,
     },
     {
         .iv = 139,
-        .lvl = 33,
-        .species = SPECIES_SHUPPET,
+        .lvl = 46,
+        .species = SPECIES_BANETTE,
     },
 };
 

@@ -71,7 +71,7 @@ SaffronCity_Text_FightingDojo::
 
 SaffronCity_Text_GymSign::
     .string "SAFFRON CITY POKéMON GYM\n"
-    .string "LEADER: SABRINA\l"
+    .string "LEADER: SABRINA and KOGA\l"
     .string "The Master of PSYCHIC POKéMON!$"
 
 SaffronCity_Text_FullHealCuresStatus::

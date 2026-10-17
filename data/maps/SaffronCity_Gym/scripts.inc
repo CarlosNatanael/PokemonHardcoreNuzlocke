@@ -1,11 +1,19 @@
 SaffronCity_Gym_MapScripts::
 	.byte 0
 
+SaffronCity_Gym_EventScript_Koga::
+	famechecker FAMECHECKER_SABRINA, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
+	trainerbattle_double TRAINER_LEADER_SABRINA, SaffronCity_Gym_Text_KogaIntro, SaffronCity_Gym_Text_SabrinaDefeat, SaffronCity_Gym_Text_NeedTwoMons, SaffronCity_Gym_EventScript_DefeatedSabrina, NO_MUSIC
+	goto_if_unset FLAG_GOT_TM04_FROM_SABRINA, SaffronCity_Gym_EventScript_GiveTM04
+	msgbox SaffronCity_Gym_Text_KogaPostBattle
+	release
+	end
+
 SaffronCity_Gym_EventScript_Sabrina::
 	famechecker FAMECHECKER_SABRINA, FCPICKSTATE_COLORED, UpdatePickStateFromSpecialVar8005
-	trainerbattle_single TRAINER_LEADER_SABRINA, SaffronCity_Gym_Text_SabrinaIntro, SaffronCity_Gym_Text_SabrinaDefeat, SaffronCity_Gym_EventScript_DefeatedSabrina, NO_MUSIC
+	trainerbattle_double TRAINER_LEADER_SABRINA, SaffronCity_Gym_Text_SabrinaIntro, SaffronCity_Gym_Text_SabrinaDefeat, SaffronCity_Gym_Text_NeedTwoMons, SaffronCity_Gym_EventScript_DefeatedSabrina, NO_MUSIC
 	goto_if_unset FLAG_GOT_TM04_FROM_SABRINA, SaffronCity_Gym_EventScript_GiveTM04
-	msgbox SaffronCity_Gym_Text_ExplainTM04
+	msgbox SaffronCity_Gym_Text_SabrinaPostBattle
 	release
 	end
 
