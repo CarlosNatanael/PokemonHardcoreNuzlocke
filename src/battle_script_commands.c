@@ -3116,10 +3116,10 @@ u8 GetCurrentLevelCap(void)
     if (FlagGet(FLAG_SYS_GAME_CLEAR)) return MAX_LEVEL;
 
     if (FlagGet(FLAG_BADGE08_GET)) return 73; // Limite E4
-    if (FlagGet(FLAG_BADGE07_GET)) return 65; // Limite LANCE
-    if (FlagGet(FLAG_BADGE06_GET)) return 55; // Limite KOGA&SABRI
-    if (FlagGet(FLAG_BADGE05_GET)) return 50; // Limite BLAINE
-    if (FlagGet(FLAG_BADGE04_GET)) return 45; // Limite WINONA
+    if (FlagGet(FLAG_BADGE07_GET)) return 64; // Limite LANCE
+    if (FlagGet(FLAG_BADGE06_GET)) return 53; // Limite KOGA&SABRI
+    if (FlagGet(FLAG_BADGE05_GET)) return 58; // Limite BLAINE
+    if (FlagGet(FLAG_BADGE04_GET)) return 48; // Limite WINONA
     if (FlagGet(FLAG_BADGE03_GET)) return 31; // Limite NORMAN
     if (FlagGet(FLAG_BADGE02_GET)) return 26; // Limite WATTSON
     if (FlagGet(FLAG_BADGE01_GET)) return 23; // Limite BRAWLY
