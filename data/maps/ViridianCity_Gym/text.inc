@@ -1,53 +1,52 @@
 ViridianCity_Gym_Text_GiovanniIntro::
-    .string "Fwahahaha!\n"
-    .string "Welcome to my hideout!\p"
-    .string "It shall be so until I can restore\n"
-    .string "TEAM ROCKET to its former glory.\p"
-    .string "But, you have found me again.\n"
-    .string "So be it.\l"
-    .string "This time, I'm not holding back!\p"
-    .string "Once more, you shall face\n"
-    .string "GIOVANNI, the greatest TRAINER!{PLAY_BGM}{MUS_ENCOUNTER_ROCKET}$"
+    .string "Welcome to the final GYM!\p"
+    .string "I am LANCE of the ELITE FOUR!\n"
+    .string "The former LEADER abandoned his\l"
+    .string "post, so I stepped in to test the\l"
+    .string "worth of any aspiring Champions.\p"
+    .string "DRAGONS are mythical, powerful\n"
+    .string "creatures that are virtually\l"
+    .string "indestructible.\p"
+    .string "Are you ready to face the supreme\n"
+    .string "power of my DRAGON POKéMON?\p"
+    .string "Show me your true strength!{PLAY_BGM}{MUS_ENCOUNTER_ROCKET}$"
 
 ViridianCity_Gym_Text_GiovanniDefeat::
-    .string "Ha!\n"
-    .string "That was a truly intense fight.\l"
-    .string "You have won!\p"
-    .string "As proof, here is the EARTHBADGE!\n"
+    .string "That’s it!\n"
+    .string "I hate to admit it, but you are\l"
+    .string "a POKéMON master!\p"
+    .string "As proof of your victory, I bestow\n"
+    .string "upon you the DRAGONBADGE!\n"
     .string "{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}$"
 
 ViridianCity_Gym_Text_GiovanniPostBattle::
-    .string "Having lost in this fashion, \n"
-    .string "I can't face my followers.\l"
-    .string "I have betrayed their trust.\p"
-    .string "As of today, TEAM ROCKET is\n"
-    .string "finished forever!\p"
-    .string "As for myself, I shall dedicate\n"
-    .string "my life to training again.\p"
-    .string "Let us meet again someday!\n"
+    .string "Your battle style is truly inspiring.\n"
+    .string "I see why you've made it this far.\p"
+    .string "I will relinquish control of this\n"
+    .string "GYM and return to the LEAGUE.\p"
+    .string "I look forward to our next clash\n"
+    .string "at the INDIGO PLATEAU!\n"
     .string "Farewell!$"
 
 ViridianCity_Gym_Text_ExplainEarthBadgeTakeThis::
-    .string "The EARTHBADGE makes POKéMON of\n"
+    .string "The DRAGONBADGE makes POKéMON of\n"
     .string "any level obey without question.\p"
-    .string "It is evidence of your mastery as\n"
-    .string "a POKéMON TRAINER.\p"
-    .string "With it, you can challenge the\n"
+    .string "It is evidence that you have tamed\n"
+    .string "the most fierce of creatures.\p"
+    .string "With it, you may challenge the\n"
     .string "POKéMON LEAGUE.\p"
-    .string "Also, take this TM.\p"
-    .string "Consider it a gift for your POKéMON\n"
-    .string "LEAGUE challenge.$"
+    .string "Please, take this TM as my gift.$"
 
 ViridianCity_Gym_Text_ReceivedTM26FromGiovanni::
-    .string "{PLAYER} received TM26\n"
-    .string "from GIOVANNI.$"
+    .string "{PLAYER} received TM02\n"
+    .string "from LANCE.$"
 
 ViridianCity_Gym_Text_ExplainTM26::
-    .string "TM26 contains EARTHQUAKE.\p"
-    .string "It is a powerful attack that causes\n"
-    .string "a massive tremor.\p"
-    .string "I made it when I ran the GYM here,\n"
-    .string "far too long ago… $"
+    .string "TM02 contains DRAGON CLAW.\p"
+    .string "It slices the opponent with razor-\n"
+    .string "sharp claws infused with fury.\p"
+    .string "Teach it to a POKéMON that shares\n"
+    .string "our warrior spirit!$"
 
 ViridianCity_Gym_Text_YouDoNotHaveSpace::
     .string "You do not have space for this!$"
@@ -55,117 +54,119 @@ ViridianCity_Gym_Text_YouDoNotHaveSpace::
 ViridianCity_Gym_Text_YujiIntro::
     .string "Heh!\n"
     .string "You must be running out of steam\l"
-    .string "by now!$"
+    .string "by now! Our DRAGONS never tire!$"
 
 ViridianCity_Gym_Text_YujiDefeat::
-    .string "I ran out of gas!$"
+    .string "My scales were shattered!$"
 
 ViridianCity_Gym_Text_YujiPostBattle::
-    .string "You'll need power to keep up with\n"
-    .string "our GYM LEADER.$"
+    .string "You'll need unimaginable power to\n"
+    .string "keep up with LANCE.$"
 
 ViridianCity_Gym_Text_AtsushiIntro::
     .string "Rrrroar!\n"
-    .string "I'm working myself into a rage!$"
+    .string "We channel the fury of dragons!$"
 
 ViridianCity_Gym_Text_AtsushiDefeat::
-    .string "Wargh!$"
+    .string "Wargh! Burnt out!$"
 
 ViridianCity_Gym_Text_AtsushiPostBattle::
-    .string "I'm still not worthy!$"
+    .string "I'm still not worthy to be called\n"
+    .string "a DRAGON TAMER!$"
 
 ViridianCity_Gym_Text_JasonIntro::
-    .string "POKéMON and I, we make wonderful\n"
-    .string "music together!$"
+    .string "My POKéMON and I soar through the\n"
+    .string "skies in perfect harmony!$"
 
 ViridianCity_Gym_Text_JasonDefeat::
-    .string "You are in perfect harmony!$"
+    .string "Shot down from the sky!$"
 
 ViridianCity_Gym_Text_JasonPostBattle::
-    .string "Do you know the identity of our\n"
-    .string "GYM LEADER?$"
+    .string "Do you know who took over this\n"
+    .string "GYM? He's a living legend!$"
 
 ViridianCity_Gym_Text_KiyoIntro::
-    .string "Karate is the ultimate form of\n"
-    .string "martial arts!$"
+    .string "DRAGONS are the ultimate form of\n"
+    .string "evolution!$"
 
 ViridianCity_Gym_Text_KiyoDefeat::
-    .string "Aiyah!$"
+    .string "Aiyah! Devastated!$"
 
 ViridianCity_Gym_Text_KiyoPostBattle::
-    .string "If my POKéMON were as good at\n"
-    .string "karate as I…$"
+    .string "If only I could master the DRAGON\n"
+    .string "DANCE...$"
 
 ViridianCity_Gym_Text_WarrenIntro::
-    .string "The truly talented win with style.$"
+    .string "The truly talented win with the\n"
+    .string "grace of a flying DRAGON.$"
 
 ViridianCity_Gym_Text_WarrenDefeat::
-    .string "I lost my grip!$"
+    .string "I crashed!$"
 
 ViridianCity_Gym_Text_WarrenPostBattle::
-    .string "The LEADER will scold me for\n"
-    .string "losing this way…$"
+    .string "LANCE will not be pleased with my\n"
+    .string "sloppy performance…$"
 
 ViridianCity_Gym_Text_TakashiIntro::
-    .string "I'm the KARATE KING!\n"
-    .string "Your fate rests with me!$"
+    .string "I train the most ferocious beasts!\n"
+    .string "Your fate rests with their fangs!$"
 
 ViridianCity_Gym_Text_TakashiDefeat::
-    .string "Ayah!$"
+    .string "Ayah! Tamed!$"
 
 ViridianCity_Gym_Text_TakashiPostBattle::
     .string "The POKéMON LEAGUE?\n"
-    .string "You? Don't get cocky!$"
+    .string "You might actually have a chance!$"
 
 ViridianCity_Gym_Text_ColeIntro::
     .string "Your POKéMON will cower at the\n"
-    .string "crack of my whip!$"
+    .string "roar of my monsters!$"
 
 ViridianCity_Gym_Text_ColeDefeat::
     .string "Yowch!\n"
-    .string "Whiplash!$"
+    .string "Bitten back!$"
 
 ViridianCity_Gym_Text_ColePostBattle::
     .string "Wait!\n"
-    .string "I was just careless!$"
+    .string "I was just careless with my tactics!$"
 
 ViridianCity_Gym_Text_SamuelIntro::
     .string "VIRIDIAN GYM was closed for a\n"
     .string "long time.\p"
-    .string "But now, our LEADER is back!$"
+    .string "But now, an ELITE FOUR member has\n"
+    .string "taken control!$"
 
 ViridianCity_Gym_Text_SamuelDefeat::
-    .string "I was beaten?$"
+    .string "I was beaten that easily?$"
 
 ViridianCity_Gym_Text_SamuelPostBattle::
-    .string "You can go on to the POKéMON\n"
-    .string "LEAGUE only by defeating our GYM\l"
-    .string "LEADER!$"
+    .string "You can only reach the INDIGO\n"
+    .string "PLATEAU if you survive our LEADER!$"
 
 ViridianCity_Gym_Text_GymGuyAdvice::
     .string "Yo!\n"
     .string "Champ in the making!\p"
-    .string "Even I don't know the VIRIDIAN\n"
-    .string "LEADER's identity.\p"
-    .string "But one thing's certain.\n"
-    .string "This will be the toughest of all\l"
-    .string "the GYM LEADERS.\p"
-    .string "Also, I heard that the TRAINERS\n"
-    .string "here like GROUND-type POKéMON.$"
+    .string "The VIRIDIAN LEADER vanished, but\n"
+    .string "LANCE stepped in to take his place!\p"
+    .string "He is an absolute master of the\n"
+    .string "DRAGON type.\p"
+    .string "ICE and DRAGON moves are your best\n"
+    .string "bet, but beware of their immense\l"
+    .string "speed and power!$"
 
 ViridianCity_Gym_Text_GymGuyPostVictory::
-    .string "Blow me away! GIOVANNI was the\n"
-    .string "GYM LEADER of VIRIDIAN?$"
+    .string "Blow me away! You defeated LANCE\n"
+    .string "of the ELITE FOUR?!$"
 
 ViridianCity_Gym_Text_GymStatue::
     .string "VIRIDIAN POKéMON GYM\n"
-    .string "LEADER: ?\p"
+    .string "LEADER: LANCE\p"
     .string "WINNING TRAINERS:\n"
     .string "{RIVAL}$"
 
 ViridianCity_Gym_Text_GymStatuePlayerWon::
     .string "VIRIDIAN POKéMON GYM\n"
-    .string "LEADER: GIOVANNI\p"
+    .string "LEADER: LANCE\p"
     .string "WINNING TRAINERS:\n"
     .string "{RIVAL}, {PLAYER}$"
 
