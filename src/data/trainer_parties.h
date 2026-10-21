@@ -3692,7 +3692,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_RivalOaksLabCharmander[]
 
 // 2. Rota 22 (Início)
 static const struct TrainerMonNoItemDefaultMoves sParty_RivalRoute22EarlySquirtle[] = {
-    { .iv = 50, .lvl = 9, .species = SPECIES_TOTODILE, },
+    { .iv = 50, .lvl = 9, .species = SPECIES_TAILLOW, },
     { .iv = 50, .lvl = 9, .species = SPECIES_TREECKO, },
 };
 
