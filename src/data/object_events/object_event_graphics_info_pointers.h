@@ -150,6 +150,9 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysD;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysA;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysN;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SSAnne;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Drake;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wallace;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Steven;
 
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
@@ -305,4 +308,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DEOXYS_A]                 = &gObjectEventGraphicsInfo_DeoxysA,
     [OBJ_EVENT_GFX_DEOXYS_N]                 = &gObjectEventGraphicsInfo_DeoxysN,
     [OBJ_EVENT_GFX_SS_ANNE]                  = &gObjectEventGraphicsInfo_SSAnne,
+    [OBJ_EVENT_GFX_STEVEN]                   = &gObjectEventGraphicsInfo_Steven,
+    [OBJ_EVENT_GFX_DRAKE]                    = &gObjectEventGraphicsInfo_Drake,
+    [OBJ_EVENT_GFX_WALLACE]                  = &gObjectEventGraphicsInfo_Wallace,
 };

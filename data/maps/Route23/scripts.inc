@@ -143,7 +143,7 @@ Route23_EventScript_MayTrigger::
 	
 	// Escurece a tela, remove a May, ativa a flag e clareia a tela
 	fadescreen FADE_TO_BLACK
-	removeobject LOCALID_MAY
+	removeobject LOCALID_MAY_RT23
 	setflag FLAG_DEFEATED_MAY_ROUTE23
 	fadescreen FADE_FROM_BLACK
 	
