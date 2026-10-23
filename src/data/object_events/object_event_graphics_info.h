@@ -2926,7 +2926,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SSAnne = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Drake = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_DRAKE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 256,
     .width = 16,
@@ -2945,7 +2945,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Drake = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Steven = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_STEVEN,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 256,
     .width = 16,
@@ -2964,7 +2964,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Steven = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wallace = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_WALLACE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 256,
     .width = 16,

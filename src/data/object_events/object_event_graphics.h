@@ -1,4 +1,7 @@
 const u16 gObjectEventPal_Player[] = INCBIN_U16("graphics/object_events/palettes/player.gbapal");
+const u16 gObjectEventPal_Steven[] = INCBIN_U16("graphics/object_events/palettes/steven.gbapal");
+const u16 gObjectEventPal_Drake[] = INCBIN_U16("graphics/object_events/palettes/drake.gbapal");
+const u16 gObjectEventPal_Wallace[] = INCBIN_U16("graphics/object_events/palettes/wallace.gbapal");
 const u16 gObjectEventPal_PlayerUnused[] = INCBIN_U16("graphics/object_events/palettes/player_unused.gbapal"); // Identical except for the transparency
 const u16 gObjectEventPaletteNull1[16] = {};
 const u16 gObjectEventPaletteNull2[16] = {};
@@ -230,6 +233,6 @@ const u16 gFieldEffectObjectPic_Bubbles[] = INCBIN_U16("graphics/field_effects/p
 const u16 gFieldEffectObjectPic_SmallSparkle[] = INCBIN_U16("graphics/field_effects/pics/small_sparkle.4bpp");
 const u16 gFieldEffectPal_SmallSparkle[] = INCBIN_U16("graphics/field_effects/palettes/small_sparkle.gbapal");
 const u16 gFieldEffectObjectPic_Bird[] = INCBIN_U16("graphics/field_effects/pics/bird.4bpp");
-const u16 gObjectEventPic_Steven[] = INCBIN_U16("graphics/object_events/pics/people/steven.4bpp");
-const u16 gObjectEventPic_Drake[] = INCBIN_U16("graphics/object_events/pics/people/drake.4bpp");
+const u16 gObjectEventPic_Steven[]  = INCBIN_U16("graphics/object_events/pics/people/steven.4bpp");
+const u16 gObjectEventPic_Drake[]   = INCBIN_U16("graphics/object_events/pics/people/drake.4bpp");
 const u16 gObjectEventPic_Wallace[] = INCBIN_U16("graphics/object_events/pics/people/wallace.4bpp");
