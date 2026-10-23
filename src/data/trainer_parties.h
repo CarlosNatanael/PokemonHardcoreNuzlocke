@@ -4351,17 +4351,17 @@ static const struct TrainerMonNoItemDefaultMoves sParty_TeamRocketGrunt21[] = {
     },
     {
         .iv = 109,
-        .lvl = 23,
+        .lvl = 24,
         .species = SPECIES_SLUGMA,
     },
     {
         .iv = 109,
-        .lvl = 23,
+        .lvl = 25,
         .species = SPECIES_ARON,
     },
     {
         .iv = 109,
-        .lvl = 23,
+        .lvl = 26,
         .species = SPECIES_SNEASEL,
     },
 };
@@ -10316,5 +10316,50 @@ static const struct TrainerMonNoItemDefaultMoves sParty_CueBallPaxton[] = {
         .iv = 157,
         .lvl = 39,
         .species = SPECIES_WHISCASH,
+    },
+};
+
+static const struct TrainerMonItemCustomMoves sParty_Madoka[] = {
+    {
+        .iv = 255,
+        .lvl = 80,
+        .species = SPECIES_SNORLAX,
+        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_CURSE, MOVE_REST, MOVE_SLEEP_TALK, MOVE_BODY_SLAM},
+    },
+    {
+        .iv = 255,
+        .lvl = 80,
+        .species = SPECIES_UMBREON,
+        .heldItem = ITEM_BRIGHT_POWDER,
+        .moves = {MOVE_TOXIC, MOVE_DOUBLE_TEAM, MOVE_MOONLIGHT, MOVE_CONFUSE_RAY},
+    },
+    {
+        .iv = 255,
+        .lvl = 80,
+        .species = SPECIES_LAPRAS,
+        .heldItem = ITEM_LUM_BERRY,
+        .moves = {MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_PSYCHIC, MOVE_SURF},
+    },
+    {
+        .iv = 255,
+        .lvl = 80,
+        .species = SPECIES_TYRANITAR,
+        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE, MOVE_DRAGON_DANCE, MOVE_BRICK_BREAK},
+    },
+    {
+        .iv = 255,
+        .lvl = 80,
+        .species = SPECIES_ALAKAZAM,
+        .heldItem = ITEM_LUM_BERRY,
+        .moves = {MOVE_THUNDER_PUNCH, MOVE_FIRE_PUNCH, MOVE_PSYCHIC, MOVE_ICE_PUNCH},
+    },
+    {
+        .iv = 255,
+        .lvl = 80,
+        .species = SPECIES_SCEPTILE,
+        .heldItem = ITEM_SCOPE_LENS,
+        .moves = {MOVE_LEAF_BLADE, MOVE_EARTHQUAKE, MOVE_DRAGON_CLAW, MOVE_AERIAL_ACE},
     },
 };

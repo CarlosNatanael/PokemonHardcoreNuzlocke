@@ -1,7 +1,29 @@
+.include "data/maps/SixIsland_AlteringCave/text.inc"
+
 SixIsland_AlteringCave_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, SixIsland_AlteringCave_OnTransition
 	.byte 0
 
 SixIsland_AlteringCave_OnTransition::
 	setworldmapflag FLAG_WORLD_MAP_SIX_ISLAND_ALTERING_CAVE
+	end
+
+SixIsland_AlteringCave_EventScript_Madoka::
+	lock
+	faceplayer
+	goto_if_defeated TRAINER_MADOKA, SixIsland_AlteringCave_EventScript_MadokaPostBattle
+	msgbox SixIsland_AlteringCave_Text_MadokaIntro, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, SixIsland_AlteringCave_EventScript_MadokaDeclined
+	trainerbattle_no_intro TRAINER_MADOKA, SixIsland_AlteringCave_Text_MadokaVictory
+	goto SixIsland_AlteringCave_EventScript_MadokaPostBattle
+	end
+
+SixIsland_AlteringCave_EventScript_MadokaDeclined::
+	msgbox SixIsland_AlteringCave_Text_MadokaRefuse, MSGBOX_DEFAULT
+	release
+	end
+
+SixIsland_AlteringCave_EventScript_MadokaPostBattle::
+	msgbox SixIsland_AlteringCave_Text_MadokaPostBattle, MSGBOX_DEFAULT
+	release
 	end
