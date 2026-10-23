@@ -10456,3 +10456,26 @@ static const struct TrainerMonItemCustomMoves sParty_MayRoute23[] = {
         .moves = {MOVE_FLAMETHROWER, MOVE_SKY_UPPERCUT, MOVE_THUNDER_PUNCH, MOVE_ROCK_SLIDE},
     }
 };
+
+static const struct TrainerMonItemCustomMoves sParty_RivalFiveIsland[] = {
+    {
+        .iv = 255, .lvl = 70, .species = SPECIES_PIKACHU, .heldItem = ITEM_LIGHT_BALL,
+        .moves = {MOVE_THUNDERBOLT, MOVE_VOLT_TACKLE, MOVE_QUICK_ATTACK, MOVE_IRON_TAIL}
+    },
+    {
+        .iv = 255, .lvl = 70, .species = SPECIES_AERODACTYL, .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_ROCK_SLIDE, MOVE_EARTHQUAKE, MOVE_AERIAL_ACE, MOVE_DOUBLE_EDGE}
+    },
+    {
+        .iv = 255, .lvl = 76, .species = SPECIES_SNORLAX, .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_BODY_SLAM, MOVE_SHADOW_BALL, MOVE_REST, MOVE_SLEEP_TALK}
+    },
+    {
+        .iv = 255, .lvl = 75, .species = SPECIES_LAPRAS, .heldItem = ITEM_LUM_BERRY,
+        .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_CONFUSE_RAY}
+    },
+    {
+        .iv = 255, .lvl = 74, .species = SPECIES_VENUSAUR, .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_GIGA_DRAIN, MOVE_SLUDGE_BOMB, MOVE_LEECH_SEED, MOVE_SYNTHESIS}
+    }
+};
