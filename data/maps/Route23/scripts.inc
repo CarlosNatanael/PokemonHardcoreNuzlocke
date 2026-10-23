@@ -126,3 +126,47 @@ Route23_EventScript_EarthBadgeGuardTrigger::
 Route23_EventScript_VictoryRoadGateSign::
 	msgbox Route23_Text_VictoryRoadGateSign, MSGBOX_SIGN
 	end
+
+Route23_EventScript_MayTrigger::
+	lock
+	faceplayer
+	
+	// Diálogo inicial
+	msgbox Route23_Text_MayIntro, MSGBOX_DEFAULT
+	
+	// Batalha
+	trainerbattle_no_intro TRAINER_MAY_ROUTE23, Route23_Text_MayDefeat
+	
+	// Diálogo pós-batalha
+	msgbox Route23_Text_MayPostBattle, MSGBOX_DEFAULT
+	closemessage
+	
+	// Escurece a tela, remove a May, ativa a flag e clareia a tela
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_MAY
+	setflag FLAG_DEFEATED_MAY_ROUTE23
+	fadescreen FADE_FROM_BLACK
+	
+	release
+	end
+	
+Route23_EventScript_MayTriggerEnd::
+	releaseall
+	end
+
+// Movimentos
+Route23_Movement_MayApproaches:
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+Route23_Movement_MayLeaves:
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end

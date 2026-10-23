@@ -10411,3 +10411,48 @@ static const struct TrainerMonItemCustomMoves sParty_Rocket2[] = {
         .moves = {MOVE_POUND, MOVE_HYPNOSIS, MOVE_CONFUSION, MOVE_DISABLE},
     },
 };
+
+static const struct TrainerMonItemCustomMoves sParty_MayRoute23[] = {
+    {
+        .iv = 255,
+        .lvl = 58,
+        .species = SPECIES_BRELOOM,
+        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_SPORE, MOVE_MACH_PUNCH, MOVE_GIGA_DRAIN, MOVE_LEECH_SEED},
+    },
+    {
+        .iv = 255,
+        .lvl = 58,
+        .species = SPECIES_GARDEVOIR,
+        .heldItem = ITEM_LUM_BERRY,
+        .moves = {MOVE_PSYCHIC, MOVE_THUNDERBOLT, MOVE_CALM_MIND, MOVE_WILL_O_WISP},
+    },
+    {
+        .iv = 255,
+        .lvl = 59,
+        .species = SPECIES_MILOTIC,
+        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_RECOVER, MOVE_TOXIC},
+    },
+    {
+        .iv = 255,
+        .lvl = 59,
+        .species = SPECIES_SALAMENCE,
+        .heldItem = ITEM_LUM_BERRY,
+        .moves = {MOVE_DRAGON_CLAW, MOVE_EARTHQUAKE, MOVE_AERIAL_ACE, MOVE_FLAMETHROWER},
+    },
+    {
+        .iv = 255,
+        .lvl = 60,
+        .species = SPECIES_METAGROSS,
+        .heldItem = ITEM_QUICK_CLAW,
+        .moves = {MOVE_METEOR_MASH, MOVE_EARTHQUAKE, MOVE_SHADOW_BALL, MOVE_AGILITY},
+    },
+    {
+        .iv = 255,
+        .lvl = 61,
+        .species = SPECIES_BLAZIKEN,
+        .heldItem = ITEM_SALAC_BERRY,
+        .moves = {MOVE_FLAMETHROWER, MOVE_SKY_UPPERCUT, MOVE_THUNDER_PUNCH, MOVE_ROCK_SLIDE},
+    }
+};
