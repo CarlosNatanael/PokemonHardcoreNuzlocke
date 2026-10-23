@@ -10363,3 +10363,51 @@ static const struct TrainerMonItemCustomMoves sParty_Madoka[] = {
         .moves = {MOVE_LEAF_BLADE, MOVE_EARTHQUAKE, MOVE_DRAGON_CLAW, MOVE_AERIAL_ACE},
     },
 };
+
+static const struct TrainerMonItemCustomMoves sParty_Rocket1[] = {
+    {
+        .iv = 109,
+        .lvl = 14,
+        .species = SPECIES_RATTATA,
+        .heldItem = ITEM_NONE,
+        .moves = {MOVE_QUICK_ATTACK, MOVE_HYPER_FANG, MOVE_TAIL_WHIP, MOVE_FOCUS_ENERGY},
+    },
+    {
+        .iv = 109,
+        .lvl = 15,
+        .species = SPECIES_ZUBAT,
+        .heldItem = ITEM_NONE,
+        .moves = {MOVE_BITE, MOVE_SUPERSONIC, MOVE_LEECH_LIFE, MOVE_ASTONISH},
+    },
+    {
+        .iv = 109,
+        .lvl = 16,
+        .species = SPECIES_EKANS,
+        .heldItem = ITEM_NONE,
+        .moves = {MOVE_BITE, MOVE_POISON_STING, MOVE_WRAP, MOVE_LEER},
+    },
+};
+
+static const struct TrainerMonItemCustomMoves sParty_Rocket2[] = {
+    {
+        .iv = 109,
+        .lvl = 14,
+        .species = SPECIES_GRIMER,
+        .heldItem = ITEM_NONE,
+        .moves = {MOVE_POUND, MOVE_POISON_GAS, MOVE_SLUDGE, MOVE_MINIMIZE},
+    },
+    {
+        .iv = 109,
+        .lvl = 15,
+        .species = SPECIES_KOFFING,
+        .heldItem = ITEM_NONE,
+        .moves = {MOVE_SMOG, MOVE_TACKLE, MOVE_SMOKESCREEN, MOVE_POISON_GAS},
+    },
+    {
+        .iv = 109,
+        .lvl = 16,
+        .species = SPECIES_DROWZEE,
+        .heldItem = ITEM_NONE,
+        .moves = {MOVE_POUND, MOVE_HYPNOSIS, MOVE_CONFUSION, MOVE_DISABLE},
+    },
+};

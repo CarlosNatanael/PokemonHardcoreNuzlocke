@@ -134,3 +134,46 @@ MtMoon_B2F_EventScript_Grunt4::
 	trainerbattle_single TRAINER_TEAM_ROCKET_GRUNT_4, MtMoon_B2F_Text_Grunt4Intro, MtMoon_B2F_Text_Grunt4Defeat
 	msgbox MtMoon_B2F_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
 	end
+
+MtMoon_B2F_EventScript_RocketMay1::
+	trainerbattle_single TRAINER_ROCKET_MAY_1, MtMoon_B2F_Text_RocketMay1Intro, MtMoon_B2F_Text_Rocket1Defeat
+	msgbox MtMoon_B2F_Text_RocketMay1Post, MSGBOX_AUTOCLOSE
+	end
+
+MtMoon_B2F_EventScript_RocketMay2::
+	trainerbattle_single TRAINER_ROCKET_MAY_2, MtMoon_B2F_Text_RocketMay2Intro, MtMoon_B2F_Text_Rocket2Defeat
+	msgbox MtMoon_B2F_Text_RocketMay2Post, MSGBOX_AUTOCLOSE
+	end
+
+MtMoon_B2F_EventScript_MayRescue::
+	lock
+	faceplayer
+	goto_if_set FLAG_RESCUED_MAY_MT_MOON, MtMoon_B2F_EventScript_MayAlreadyRescued
+	goto_if_not_defeated TRAINER_ROCKET_MAY_1, MtMoon_B2F_EventScript_MayNeedsHelp
+	goto_if_not_defeated TRAINER_ROCKET_MAY_2, MtMoon_B2F_EventScript_MayNeedsHelp
+	msgbox MtMoon_B2F_Text_MayThanks, MSGBOX_DEFAULT
+	playfanfare MUS_OBTAIN_ITEM
+	message MtMoon_B2F_Text_ObtainedNationalDex
+	waitmessage
+	waitfanfare
+	special EnableNationalPokedex
+	msgbox MtMoon_B2F_Text_MayFarewell, MSGBOX_DEFAULT
+	closemessage
+	setflag FLAG_RESCUED_MAY_MT_MOON
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_MAY
+	removeobject LOCALID_MAY_ROCKET_1
+	removeobject LOCALID_MAY_ROCKET_2
+	fadescreen FADE_FROM_BLACK
+	release
+	end
+
+MtMoon_B2F_EventScript_MayNeedsHelp::
+	msgbox MtMoon_B2F_Text_MayNeedsHelp, MSGBOX_DEFAULT
+	release
+	end
+
+MtMoon_B2F_EventScript_MayAlreadyRescued::
+	msgbox MtMoon_B2F_Text_MayFarewell, MSGBOX_DEFAULT
+	release
+	end

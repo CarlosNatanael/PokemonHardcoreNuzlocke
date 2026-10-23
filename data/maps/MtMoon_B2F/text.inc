@@ -82,3 +82,50 @@ MtMoon_B2F_Text_ObtainedHelixFossil::
 MtMoon_B2F_Text_ObtainedDomeFossil::
     .string "Obtained the DOME FOSSIL!$"
 
+MtMoon_B2F_Text_RocketMay1Intro::
+	.string "Hand over those rare HOENN\n"
+	.string "POKéMON, girly!\p"
+	.string "Huh? Who's this kid?\n"
+	.string "Let's teach you a lesson!$"
+
+MtMoon_B2F_Text_RocketMay1Post::
+	.string "I lost to a brat...$"
+
+MtMoon_B2F_Text_RocketMay2Intro::
+	.string "You idiot, move out of the way!\n"
+	.string "I'll crush this kid!$"
+
+MtMoon_B2F_Text_RocketMay2Post::
+	.string "We're getting destroyed...$"
+
+MtMoon_B2F_Text_MayNeedsHelp::
+	.string "MAY: Please help me!\n"
+	.string "These ROCKETs won't leave me alone!$"
+
+MtMoon_B2F_Text_Rocket1Defeat::
+	.string "What?! I lost to a brat?$"
+
+MtMoon_B2F_Text_Rocket2Defeat::
+	.string "Argh! We're getting destroyed!$"
+
+MtMoon_B2F_Text_MayThanks::
+	.string "MAY: Phew... that was close!\p"
+	.string "Wow, you're really strong!\n"
+	.string "I'm MAY, a POKéMON researcher.\p"
+	.string "I came all the way from the HOENN\n"
+	.string "region to study KANTO's ecology.\p"
+	.string "Thank you so much for saving me!\n"
+	.string "I want you to have this as a reward.$"
+
+MtMoon_B2F_Text_ObtainedNationalDex::
+	.string "{PLAYER}'s POKéDEX was upgraded\n"
+	.string "to the NATIONAL mode!$"
+
+MtMoon_B2F_Text_MayFarewell::
+	.string "MAY: With the NATIONAL mode, your\n"
+	.string "POKéDEX can now record data for\l"
+	.string "POKéMON from all over the world!\p"
+	.string "Even the ones from HOENN!\p"
+	.string "I need to get back to my research.\n"
+	.string "Maybe we'll meet again.\l"
+	.string "See ya, {PLAYER}!$"
