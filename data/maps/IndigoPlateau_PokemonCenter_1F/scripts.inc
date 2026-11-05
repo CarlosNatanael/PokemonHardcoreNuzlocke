@@ -10,6 +10,9 @@ IndigoPlateau_PokemonCenter_1F_OnTransition::
 	end
 
 IndigoPlateau_PokemonCenter_1F_EventScript_CheckBlockDoor::
+	@ Hack: the League only closes (Lorelei absent) after the player has beaten it
+	@ once, even if the National Dex was obtained earlier.
+	goto_if_unset FLAG_SYS_GAME_CLEAR, EventScript_Return
 	goto_if_set FLAG_SYS_CAN_LINK_WITH_RS, EventScript_Return
 	setobjectxyperm LOCALID_LEAGUE_DOOR_GUARD, 4, 2
 	return
@@ -24,6 +27,7 @@ IndigoPlateau_PokemonCenter_1F_EventScript_DoorGuard::
 	end
 
 IndigoPlateau_PokemonCenter_1F_EventScript_CheckSeviiIslandComplete::
+	goto_if_unset FLAG_SYS_GAME_CLEAR, IndigoPlateau_PokemonCenter_1F_EventScript_SeviiIslandComplete
 	goto_if_set FLAG_SYS_CAN_LINK_WITH_RS, IndigoPlateau_PokemonCenter_1F_EventScript_SeviiIslandComplete
 	msgbox IndigoPlateau_PokemonCenter_1F_Text_LoreleiIsAbsentClosedForTimeBeing
 	release
